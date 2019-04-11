@@ -26,8 +26,8 @@ services:
     ports:
       - ${CLIENT_PORT}:${CLIENT_PORT}
     volumes:
-      - ./client/cornerstone-app/src:/srv/app/client/src
-      - ./client/cornerstone-app/public:/srv/app/client/public
+      - ./client/college_client/src:/srv/app/client/src
+      - ./client/college_client/public:/srv/app/client/public
     links:
       - server
     command: npm run start

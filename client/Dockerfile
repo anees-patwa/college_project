@@ -6,11 +6,11 @@ RUN mkdir -p /srv/app/client
 WORKDIR /srv/app/client
 
 #copy package.json
-COPY ./cornerstone-app/package*.json /srv/app/client/
+COPY ./college_client/package*.json /srv/app/client/
 
 RUN npm install
 
 #copy code into container
-COPY ./cornerstone-app/ /srv/app/client/
+COPY ./college_client/ /srv/app/client/
 
 CMD ["npm", "start"]
