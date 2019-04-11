@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  server:
+    build: ./server
+    container_name: server
+    environment:
+      - SERVER_HOST=${SERVER_HOST}
+      - SERVER_PORT=${SERVER_PORT}
+    expose:
+      - ${SERVER_PORT}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - ./server:/srv/app/server/src
+    command: npm run dev
+
+  client:
+    build: ./client
+    container_name: client
+    environment:
+      - CLIENT_PORT=${CLIENT_PORT}
+    expose:
+      - ${CLIENT_PORT}
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    volumes:
+      - ./client/cornerstone-app/src:/srv/app/client/src
+      - ./client/cornerstone-app/public:/srv/app/client/public
+    links:
+      - server
+    command: npm run start
+
